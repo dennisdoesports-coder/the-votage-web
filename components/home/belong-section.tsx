@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
@@ -39,6 +39,8 @@ const cards = [
 
 export const BelongSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -54,6 +56,34 @@ export const BelongSection = () => {
       });
     }
   };
+
+  // Update scroll button states
+  const updateScrollButtons = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      // Initial check
+      updateScrollButtons();
+      
+      // Listen for scroll events
+      container.addEventListener('scroll', updateScrollButtons, { passive: true });
+      
+      // Also check on resize
+      window.addEventListener('resize', updateScrollButtons, { passive: true });
+      
+      return () => {
+        container.removeEventListener('scroll', updateScrollButtons);
+        window.removeEventListener('resize', updateScrollButtons);
+      };
+    }
+  }, []);
 
   return (
     <section className="bg-white py-16 lg:py-24 overflow-hidden">
@@ -73,14 +103,24 @@ export const BelongSection = () => {
           <div className="flex items-center gap-3">
             <button 
               onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20"
+              disabled={!canScrollLeft}
+              className={`w-12 h-12 rounded-full border border-black/10 flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20 ${
+                canScrollLeft 
+                  ? 'hover:bg-black hover:text-white cursor-pointer' 
+                  : 'opacity-30 cursor-not-allowed'
+              }`}
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20"
+              disabled={!canScrollRight}
+              className={`w-12 h-12 rounded-full border border-black/10 flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20 ${
+                canScrollRight 
+                  ? 'hover:bg-black hover:text-white cursor-pointer' 
+                  : 'opacity-30 cursor-not-allowed'
+              }`}
               aria-label="Scroll right"
             >
               <ChevronRight className="w-6 h-6" />
