@@ -104,26 +104,34 @@ export const BelongSection = () => {
             <button 
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
-              className={`w-12 h-12 rounded-full border border-black/10 flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20 ${
+              className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none  ring-1 ring-black ${
                 canScrollLeft 
-                  ? 'hover:bg-black hover:text-white cursor-pointer' 
-                  : 'opacity-30 cursor-not-allowed'
+                  ? 'bg-black hover:text-white cursor-pointer' 
+                  : 'opacity-90 cursor-not-allowed'
               }`}
               aria-label="Scroll left"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className={`w-6 ${
+                canScrollLeft 
+                  ? 'text-white' 
+                  : 'text-black'
+              } h-6`} />
             </button>
             <button 
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
-              className={`w-12 h-12 rounded-full border border-black/10 flex items-center justify-center transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-black/20 ${
+              className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none ring-1 ring-black ${
                 canScrollRight 
-                  ? 'hover:bg-black hover:text-white cursor-pointer' 
-                  : 'opacity-30 cursor-not-allowed'
+                  ? 'bg-black hover:text-white cursor-pointer' 
+                  : 'opacity-90 cursor-not-allowed'
               }`}
               aria-label="Scroll right"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className={`w-6 ${
+                canScrollRight 
+                  ? 'text-white' 
+                  : 'text-black'
+              } h-6`} />
             </button>
           </div>
         </div>
