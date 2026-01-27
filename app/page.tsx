@@ -1,5 +1,14 @@
+import React from 'react';
 import { Navbar } from '@/components/layout/navbar';
 import { HeroSection } from '@/components/hero/hero-section';
+import { InfoCardsSection } from '@/components/home/info-cards-section';
+import { BelongSection } from '@/components/home/belong-section';
+import { MediaSection } from '@/components/home/media-section';
+import { EventsSection } from '@/components/home/events-section';
+import { WatchLiveSection } from '@/components/home/watch-live-section';
+import { TrustSection } from '@/components/home/trust-section';
+import { QuickLinksSection } from '@/components/home/quick-links-section';
+import { Footer } from '@/components/layout/footer';
 
 export default function Home() {
   return (
@@ -7,7 +16,15 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <InfoCardsSection />
+        <BelongSection />
+        <MediaSection />
+        <EventsSection />
+        <WatchLiveSection />
+        <TrustSection />
+        <QuickLinksSection />
       </main>
+      <Footer />
     </div>
   );
 }
