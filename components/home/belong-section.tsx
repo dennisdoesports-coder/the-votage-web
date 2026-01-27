@@ -2,7 +2,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/Button';
 
 const cards = [
   {
