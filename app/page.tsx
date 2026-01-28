@@ -3,7 +3,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { HeroSection } from '@/components/hero/hero-section';
 import { InfoCardsSection } from '@/components/home/info-cards-section';
 import { BelongSection } from '@/components/home/belong-section';
-import { MediaSection } from '@/components/home/media-section';
+import MediaSermons from '@/components/home/media-section';
 import { EventsSection } from '@/components/home/events-section';
 import { WatchLiveSection } from '@/components/home/watch-live-section';
 import { TrustSection } from '@/components/home/trust-section';
@@ -18,7 +18,7 @@ export default function Home() {
         <HeroSection />
         <InfoCardsSection />
         <BelongSection />
-        <MediaSection />
+        <MediaSermons />
         <EventsSection />
         <WatchLiveSection />
         <TrustSection />
