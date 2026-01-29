@@ -44,7 +44,7 @@ export const InfoCardsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.6, ease: "easeOut" }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl shadow-[0px_29px_40px_rgba(0,0,0,0.08)] relative overflow-hidden p-6 lg:p-8 group cursor-default border border-gray-100"
+              className="bg-white rounded-2xl shadow-[0px_15px_40px_rgba(0,0,0,0.08)] relative overflow-hidden p-6 lg:p-8 group cursor-default border border-gray-100"
             >
               {/* Decorative Corner */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-black rounded-bl-[100%] transition-transform duration-500 group-hover:scale-110 origin-top-right" />
