@@ -4,7 +4,9 @@ import { Button } from '../ui/button';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#010101] text-white pt-20 pb-10 overflow-hidden relative">
+    <footer 
+      className="bg-[#010101] text-white pt-20 pb-10 overflow-hidden relative bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: 'url(/img/footer-bg.png)' }}>
       {/* Background Texture Overlay (Optional subtle texture from design) */}
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none" />
 
