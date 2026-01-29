@@ -1,4 +1,4 @@
-import React from 'react';
+import { Logo } from '../ui/logo';
 import { Instagram, Youtube, Facebook } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -17,8 +17,7 @@ export const Footer = () => {
           <div className="flex flex-col gap-8">
             <div className="flex items-center gap-3">
                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
-                  {/* Placeholder for logo if needed, using generic circle for now */}
-                  <div className="w-full h-full bg-white/20" />
+                  <Logo />
                </div>
                <span className="font-body text-2xl">Follow us</span>
             </div>

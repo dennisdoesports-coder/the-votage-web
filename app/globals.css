@@ -11,8 +11,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  /* Add your custom fonts */
-  --font-display: var(--font-playfair), 'Copperplate', 'Copperplate Gothic Light', 'serif';
+  /* Copperplate Fonts */
+  --font-display: var(--font-copperplate-bold), 'Copperplate', serif;
+  --font-display-medium: var(--font-copperplate-medium), 'Copperplate', serif;
+  --font-display-light: var(--font-copperplate-light), 'Copperplate', serif;
+  --font-display-condensed: var(--font-copperplate-condensed-medium), 'Copperplate', serif;
+  --font-display-condensed-bold: var(--font-copperplate-condensed-bold), 'Copperplate', serif;
+  --font-display-condensed-light: var(--font-copperplate-condensed-light), 'Copperplate', serif;
   --font-body: 'Arial', 'sans-serif';
   
   /* Add your custom colors */

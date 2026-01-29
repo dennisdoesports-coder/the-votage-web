@@ -1,21 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Agentation } from "agentation";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+
+// Local Copperplate fonts
+const copperplateBold = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Bol-.otf",
+  variable: "--font-copperplate-bold",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const copperplateMedium = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Med-.otf",
+  variable: "--font-copperplate-medium",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-display",
-  subsets: ["latin"],
+const copperplateLight = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Lig-.otf",
+  variable: "--font-copperplate-light",
+});
+
+const copperplateCondensedMedium = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Con-Med-.otf",
+  variable: "--font-copperplate-condensed-medium",
+});
+
+const copperplateCondensedBold = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Con-Bol-.otf",
+  variable: "--font-copperplate-condensed-bold",
+});
+
+const copperplateCondensedLight = localFont({
+  src: "../public/font/fonnts.com-Copperplate-Con-Lig-.otf",
+  variable: "--font-copperplate-condensed-light",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
+        className={` ${copperplateBold.variable} ${copperplateMedium.variable} ${copperplateLight.variable} ${copperplateCondensedMedium.variable} ${copperplateCondensedBold.variable} ${copperplateCondensedLight.variable} antialiased`}
       >
         {process.env.NODE_ENV === "development" && <Agentation />}
         {children}
