@@ -29,8 +29,8 @@ export const QuickLinksSection = () => {
   };
 
   return (
-    <section className="bg-quick-links-bg py-20">
-      <div className="max-w-[1440px] mx-auto px-[73px]">
+    <section className="bg-quick-links-bg py-12 md:py-16 lg:py-20">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-[73px]">
         <div className="max-w-full">
           <h2 className="font-display text-4xl lg:text-5xl text-left mb-12 text-black">
             Quick Links
@@ -47,7 +47,7 @@ export const QuickLinksSection = () => {
                 >
                   <button
                     onClick={() => toggleItem(item.id)}
-                    className="w-full p-6 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors group"
+                    className="w-full px-4 py-3 md:px-6 md:py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors group"
                   >
                     <span className="font-body text-xl lg:text-2xl text-black font-medium">
                       {item.title}

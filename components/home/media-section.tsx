@@ -104,7 +104,7 @@ export default function MediaSermons() {
 
   return (
     <div 
-      className="min-h-screen  text-white px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-8 md:py-12 lg:py-16 bg-cover bg-center bg-no-repeat"
+      className="min-h-screen text-white px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-8 md:py-12 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: 'url(/img/serm-con.png)' }}
     >
       <div className="max-w-[1400px] mx-auto">
@@ -159,8 +159,8 @@ export default function MediaSermons() {
               />
               
               {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 lg:p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-                <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 lg:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <div className="space-y-2 md:space-y-3 mb-3 md:mb-4">
                   <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">
                     {activeItem.contentTag}
                   </p>
@@ -173,7 +173,7 @@ export default function MediaSermons() {
                 </div>
 
                 {/* Watch Button */}
-                <button className="px-8 md:px-10 lg:px-12 py-2.5 md:py-3 rounded-full border-2 border-white/80 text-white hover:bg-white hover:text-black transition-all duration-300 text-sm md:text-base">
+                <button className="px-6 md:px-8 lg:px-10 py-2 md:py-2.5 rounded-full border-2 border-white/80 text-white hover:bg-white hover:text-black transition-all duration-300 text-sm md:text-base">
                   Watch
                 </button>
               </div>

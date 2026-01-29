@@ -12,7 +12,7 @@
   --font-mono: var(--font-geist-mono);
   
   /* Add your custom fonts */
-  --font-display: 'Copperplate', 'Copperplate Gothic Light', 'serif';
+  --font-display: var(--font-playfair), 'Copperplate', 'Copperplate Gothic Light', 'serif';
   --font-body: 'Arial', 'sans-serif';
   
   /* Add your custom colors */
