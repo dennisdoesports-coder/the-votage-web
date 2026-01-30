@@ -4,6 +4,8 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const navLinks = [
   { name: 'Home', hasDropdown: false },
@@ -17,6 +19,21 @@ const navLinks = [
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handlePlanYourVisitClick = () => {
+    if (pathname === '/plan-your-visit') {
+      // Already on the page, scroll to form
+      const contactForm = document.querySelector('#contact-form');
+      if (contactForm) {
+        contactForm.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to the page
+      router.push('/plan-your-visit');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,20 +78,24 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link, index) => (
-            <motion.a
+            <motion.div
               key={link.name}
-              href={`#${link.name.toLowerCase()}`}
               className="group flex items-center gap-1.5 text-white/90 hover:text-white font-sans text-base transition-colors"
               animate={{
                 fontSize: isScrolled ? '0.875rem' : '1rem',
               }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-              {link.name}
-              {link.hasDropdown && (
-                <ChevronDown className="w-4 h-4 text-white/80 group-hover:text-white transition-transform group-hover:rotate-180" />
-              )}
-            </motion.a>
+              <Link
+                href={`/${link.name.toLowerCase()}`}
+                className="flex items-center gap-1.5"
+              >
+                {link.name}
+                {link.hasDropdown && (
+                  <ChevronDown className="w-4 h-4 text-white/80 group-hover:text-white transition-transform group-hover:rotate-180" />
+                )}
+              </Link>
+            </motion.div>
           ))}
         </div>
 
@@ -86,7 +107,11 @@ export const Navbar = () => {
           }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <Button variant="nav-cta" className="font-body text-lg px-8 py-3 rounded-full border-opacity-60">
+          <Button 
+            variant="nav-cta" 
+            className="font-body text-lg px-8 py-3 rounded-full border-opacity-60"
+            onClick={handlePlanYourVisitClick}
+          >
             Plan Your Visit
           </Button>
         </motion.div>
@@ -116,25 +141,33 @@ export const Navbar = () => {
           >
             <div className="flex flex-col p-6 gap-6 items-center">
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.name}
-                  href={`#${link.name.toLowerCase()}`}
                   className="text-white text-xl font-medium flex items-center gap-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown className="w-4 h-4" />}
-                </motion.a>
+                  <Link href={`/${link.name.toLowerCase()}`} className="flex items-center gap-2">
+                    {link.name}
+                    {link.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                  </Link>
+                </motion.div>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Button variant="nav-cta" className="w-full max-w-xs mt-4">
+                <Button 
+                  variant="nav-cta" 
+                  className="w-full max-w-xs mt-4"
+                  onClick={() => {
+                    handlePlanYourVisitClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
                   Plan Your Visit
                 </Button>
               </motion.div>
