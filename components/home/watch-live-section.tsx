@@ -93,7 +93,7 @@ export const WatchLiveSection = () => {
             <iframe
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`}
               title="Watch Live Stream"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="absolute inset-0 w-full h-full border-0"
             />
