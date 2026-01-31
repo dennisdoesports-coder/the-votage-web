@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Send, Youtube } from 'lucide-react';
 
 interface MediaItem {
@@ -151,11 +152,14 @@ export default function MediaSermons() {
           {/* Right Side - Content Display */}
           <div className="w-full lg:w-[55%] xl:w-[60%] flex items-center">
             <div className="w-full rounded-2xl md:rounded-3xl overflow-hidden relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/3]">
-              <img
+              <Image
                 src={activeItem.image}
                 alt={activeItem.contentTitle}
-                className="w-full h-full object-cover object-top"
+                fill
+                className="object-cover object-top"
                 style={{ objectPosition: 'center 20%', transform: 'scaleX(-1)' }}
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                priority
               />
               
               {/* Content Overlay */}

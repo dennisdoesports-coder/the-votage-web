@@ -1,8 +1,19 @@
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { ContactHero } from "@/components/contact/contact-hero";
+import { ContactForm } from "@/components/contact/contact-form";
+import { LocationMap } from "@/components/contact/location-map";
+import { ContactInfo } from "@/components/contact/contact-info";
+
 export default function ContactPage() {
   return (
-    <div>
-      <h1>Contact Page</h1>
-      <p>This is the contact page.</p>
+    <div className="relative w-full overflow-hidden">
+      <Navbar darkText />
+      <ContactHero />
+      <ContactForm />
+      <LocationMap />
+      <ContactInfo />
+      <Footer />
     </div>
   );
 }

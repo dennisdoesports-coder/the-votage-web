@@ -10,23 +10,25 @@ import { CallToAction } from "@/components/about/call-to-action";
 
 export default function AboutPage() {
   return (
-    <div className="relative bg-white w-full overflow-hidden">
-      <Navbar darkText />
+    <>
+      <div className="relative bg-white w-full overflow-hidden">
+        <Navbar darkText />
 
-      <main className="pt-20 ">
-        <div className="bg-white/90">
-          <AboutHero />
-          <GallerySection />
-        </div>
+        <main className="pt-20 ">
+          <div className="bg-white/90">
+            <AboutHero />
+            <GallerySection />
+          </div>
 
-        <AfterHero />
-        <Beliefs />
-        <CoreValues />
-        <LeadPastors />
-        <CallToAction />
-      </main>
+          <AfterHero />
+          <Beliefs />
+          <CoreValues />
+          <LeadPastors />
+          <CallToAction />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

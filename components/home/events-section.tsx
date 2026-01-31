@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const events = [
   {
@@ -38,11 +39,14 @@ export const EventsSection = () => {
               key={event.id} 
               className="bg-white rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-xl transition-shadow duration-300 p-3 flex flex-col gap-4"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden rounded">
-                <img 
+              <div className="aspect-[4/3] w-full overflow-hidden rounded relative">
+                <Image 
                   src={event.image} 
                   alt={event.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  unoptimized
                 />
               </div>
               <div className="px-2 pb-4">
@@ -57,3 +61,5 @@ export const EventsSection = () => {
     </section>
   );
 };
+
+export default EventsSection;

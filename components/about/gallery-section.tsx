@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 
 const images = [
@@ -98,10 +99,13 @@ export const GallerySection: React.FC = () => {
     });
 
     // Brighten the image
-    gsap.to(e.currentTarget.querySelector('img'), {
-      filter: "brightness(1.1)",
-      duration: 0.3
-    });
+    const img = e.currentTarget.querySelector('.gallery-image');
+    if (img) {
+      gsap.to(img, {
+        filter: "brightness(1.1)",
+        duration: 0.3
+      });
+    }
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
@@ -120,11 +124,16 @@ export const GallerySection: React.FC = () => {
     });
 
     // Reset image brightness
-    gsap.to(e.currentTarget.querySelector('img'), {
-      filter: "brightness(1)",
-      duration: 0.3
-    });
+    const img = e.currentTarget.querySelector('.gallery-image');
+    if (img) {
+      gsap.to(img, {
+        filter: "brightness(1)",
+        duration: 0.3
+      });
+    }
   };
+
+  const isExternalUrl = (url: string) => url.startsWith('http');
 
   return (
     <div ref={containerRef} className="w-full relative overflow-hidden py-16 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent">
@@ -150,16 +159,19 @@ export const GallerySection: React.FC = () => {
             onMouseEnter={(e) => handleMouseEnter(e, index)}
             onMouseLeave={(e) => handleMouseLeave(e, index)}
           >
-            <img 
-              src={img.url} 
-              alt={img.alt} 
-              className="w-full h-full object-cover transition-transform duration-700"
+            <Image
+              src={img.url}
+              alt={img.alt}
+              fill
+              className="gallery-image object-cover transition-transform duration-700"
+              sizes="(max-width: 768px) 240px, (max-width: 1024px) 280px, 320px"
+              unoptimized={isExternalUrl(img.url)}
             />
             {/* Enhanced overlay with gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300 pointer-events-none" />
             
             {/* Subtle border glow on hover */}
-            <div className="absolute inset-0 border-2 border-white/20 rounded-[40px] md:rounded-[50px] opacity-0 transition-opacity duration-300" />
+            <div className="absolute inset-0 border-2 border-white/20 rounded-[40px] md:rounded-[50px] opacity-0 transition-opacity duration-300 pointer-events-none" />
           </div>
         ))}
       </div>

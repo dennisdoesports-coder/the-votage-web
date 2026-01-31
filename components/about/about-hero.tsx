@@ -65,7 +65,7 @@ export const AboutHero: React.FC = () => {
         ref={btnRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="bg-black text-white px-8 py-3 rounded-[40px] font-arial text-xl md:text-2xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
+        className="bg-black text-white px-8 py-3 rounded-[40px] font-arial text-xl md:text-2xl flex items-center border border-black hover:text-black justify-center gap-2 hover:bg-transparent transition-colors"
       >
         Explore
       </button>

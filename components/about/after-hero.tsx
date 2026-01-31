@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export function AfterHero() {
   return (
-    <section className="bg-white py-16 px-6 md:px-[80px]">
+    <section className="bg-white pt-20 pb-16 px-6  md:px-[80px]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[39px] items-start">
           {/* Left: Image */}
