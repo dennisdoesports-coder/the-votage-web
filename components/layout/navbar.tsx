@@ -10,13 +10,17 @@ import Link from 'next/link';
 const navLinks = [
   { name: 'Home', hasDropdown: false },
   { name: 'About', hasDropdown: true },
-  { name: 'Join', hasDropdown: true },
+  { name: 'Connect', hasDropdown: true },
   { name: 'Sermons', hasDropdown: false },
   { name: 'Give', hasDropdown: false },
   { name: 'Contact', hasDropdown: true },
 ];
 
-export const Navbar = () => {
+interface NavbarProps {
+  darkText?: boolean;
+}
+
+export const Navbar = ({ darkText = false }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
@@ -44,6 +48,17 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Determine text color based on darkText prop and scroll state
+  const getTextColor = () => {
+    if (darkText && !isScrolled) return 'text-black/90 hover:text-black';
+    return 'text-white/90 hover:text-white';
+  };
+
+  const getDropdownIconColor = () => {
+    if (darkText && !isScrolled) return 'text-black/80 group-hover:text-black';
+    return 'text-white/80 group-hover:text-white';
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -53,8 +68,10 @@ export const Navbar = () => {
         fixed top-0 left-0 right-0 z-50 w-full
         transition-all duration-300 ease-in-out max-h-20
         ${isScrolled 
-          ? 'bg-nav-bg/95 backdrop-blur-md shadow-lg border-b border-white/10' 
-          : 'bg-nav-bg/5 backdrop-blur-[2px] border-b border-white/5'
+          ? 'bg-black/70 backdrop-blur-lg shadow-lg border-b border-white/10' 
+          : darkText 
+            ? 'bg-transparent backdrop-blur-[2px] border-b border-black/5'
+            : 'bg-nav-bg/5 backdrop-blur-[2px] border-b border-white/5'
         }
       `}
     >
@@ -80,7 +97,7 @@ export const Navbar = () => {
           {navLinks.map((link, index) => (
             <motion.div
               key={link.name}
-              className="group flex items-center gap-1.5 text-white/90 hover:text-white font-sans text-base transition-colors"
+              className={`group flex items-center gap-1.5 ${getTextColor()} font-sans text-base transition-colors`}
               animate={{
                 fontSize: isScrolled ? '0.875rem' : '1rem',
               }}
@@ -92,7 +109,7 @@ export const Navbar = () => {
               >
                 {link.name}
                 {link.hasDropdown && (
-                  <ChevronDown className="w-4 h-4 text-white/80 group-hover:text-white transition-transform group-hover:rotate-180" />
+                  <ChevronDown className={`w-4 h-4 ${getDropdownIconColor()} transition-transform group-hover:rotate-180`} />
                 )}
               </Link>
             </motion.div>
@@ -109,7 +126,11 @@ export const Navbar = () => {
         >
           <Button 
             variant="nav-cta" 
-            className="font-body text-lg px-8 py-3 rounded-full border-opacity-60"
+            className={`font-body text-lg px-8 py-3 rounded-full border-opacity-60 transition-all duration-300 ${
+              darkText && !isScrolled 
+                ? 'text-black border-black hover:bg-black hover:text-white' 
+                : 'text-white border-white hover:bg-white hover:text-black'
+            }`}
             onClick={handlePlanYourVisitClick}
           >
             Plan Your Visit
@@ -118,7 +139,7 @@ export const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <motion.button
-          className="lg:hidden text-white p-2"
+          className={`lg:hidden p-2 ${darkText && !isScrolled ? 'text-black' : 'text-white'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           animate={{
             scale: isScrolled ? 0.9 : 1,
@@ -178,3 +199,5 @@ export const Navbar = () => {
     </motion.nav>
   );
 };
+
+export default Navbar;

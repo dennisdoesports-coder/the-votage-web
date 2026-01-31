@@ -6,21 +6,23 @@ import { Footer } from "@/components/layout/footer";
 
 export default function PlanYourVisit() {
   return (
-    <div className="relative w-full overflow-hidden">
-      {/* Navbar */}
-      <Navbar />
+    <>
+      <div className="relative w-full overflow-hidden">
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Hero Section */}
-      <PlanYourVisitHero />
+        {/* Hero Section */}
+        <PlanYourVisitHero />
 
-      {/* Contact Form Section */}
-      <PlanYourVisitContactForm />
+        {/* Contact Form Section */}
+        <PlanYourVisitContactForm />
 
-      {/* CTA Section */}
-      <CTASection />
+        {/* CTA Section */}
+        <CTASection />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 }
