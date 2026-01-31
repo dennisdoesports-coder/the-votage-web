@@ -10,7 +10,7 @@ import Link from 'next/link';
 const navLinks = [
   { name: 'Home', hasDropdown: false },
   { name: 'About', hasDropdown: true },
-  { name: 'Join', hasDropdown: true },
+  { name: 'Connect', hasDropdown: true },
   { name: 'Sermons', hasDropdown: false },
   { name: 'Give', hasDropdown: false },
   { name: 'Contact', hasDropdown: true },
@@ -53,7 +53,7 @@ export const Navbar = () => {
         fixed top-0 left-0 right-0 z-50 w-full
         transition-all duration-300 ease-in-out max-h-20
         ${isScrolled 
-          ? 'bg-nav-bg/95 backdrop-blur-md shadow-lg border-b border-white/10' 
+          ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-white/10' 
           : 'bg-nav-bg/5 backdrop-blur-[2px] border-b border-white/5'
         }
       `}
