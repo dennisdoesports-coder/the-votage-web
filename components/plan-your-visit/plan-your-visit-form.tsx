@@ -1,22 +1,24 @@
-'use client';
+"use client";
 
-import { motion } from 'motion/react';
-import { useState } from 'react';
+import { motion } from "motion/react";
+import { useState } from "react";
 
 export function PlanYourVisitContactForm() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -24,10 +26,61 @@ export function PlanYourVisitContactForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsSubmitting(true);
+    setResult("");
+
+    const payload = {
+      FirstName: formData.firstName,
+      LastName: formData.lastName,
+      Email: formData.email,
+      Phone: formData.phone,
+      Subject: formData.subject,
+      Message: formData.message,
+      Timestamp: new Date().toISOString(),
+    };
+
+    try {
+      // Use local API route to proxy request to SpreadAPI
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      console.log("Response:", response);
+      console.log("Data:", data);
+      console.log("data.status:", data.status);
+      console.log("Type of data.status:", typeof data.status);
+
+      if (data.status === "success") {
+        // Change this line
+        setResult(
+          "Thank you! Your visit request has been submitted successfully.",
+        );
+        // Clear form after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setResult("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("SpreadAPI error:", error);
+      setResult("An error occurred while submitting. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -47,16 +100,22 @@ export function PlanYourVisitContactForm() {
   };
 
   return (
-    <div id='contact-form' className="w-full flex-1  bg-white py-16 md:py-24 px-6 md:px-8">
+    <div
+      id="contact-form"
+      className="w-full flex-1  bg-white py-16 md:py-24 px-6 md:px-8"
+    >
       <motion.div
         className="max-w-225 mx-auto"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div className="text-center mb-12 md:mb-16" variants={itemVariants}>
+        <motion.div
+          className="text-center mb-12 md:mb-16"
+          variants={itemVariants}
+        >
           <h2 className="text-[36px] font-display text-black md:text-[42px] lg:text-[48px] font-bold tracking-tight leading-tight mb-4">
             LET US KNOW YOU'RE COMING
           </h2>
@@ -85,10 +144,12 @@ export function PlanYourVisitContactForm() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                onFocus={() => setFocusedField('firstName')}
+                onFocus={() => setFocusedField("firstName")}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg ${
-                  focusedField === 'firstName' ? 'text-black' : 'text-black/50'
+                required
+                disabled={isSubmitting}
+                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                  focusedField === "firstName" ? "text-black" : "text-black/50"
                 }`}
               />
             </div>
@@ -106,10 +167,12 @@ export function PlanYourVisitContactForm() {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                onFocus={() => setFocusedField('lastName')}
+                onFocus={() => setFocusedField("lastName")}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg ${
-                  focusedField === 'lastName' ? 'text-black' : 'text-black/50'
+                required
+                disabled={isSubmitting}
+                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                  focusedField === "lastName" ? "text-black" : "text-black/50"
                 }`}
               />
             </div>
@@ -133,10 +196,12 @@ export function PlanYourVisitContactForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                onFocus={() => setFocusedField('email')}
+                onFocus={() => setFocusedField("email")}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg ${
-                  focusedField === 'email' ? 'text-black' : 'text-black/50'
+                required
+                disabled={isSubmitting}
+                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                  focusedField === "email" ? "text-black" : "text-black/50"
                 }`}
               />
             </div>
@@ -154,10 +219,11 @@ export function PlanYourVisitContactForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                onFocus={() => setFocusedField('phone')}
+                onFocus={() => setFocusedField("phone")}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg ${
-                  focusedField === 'phone' ? 'text-black' : 'text-black/50'
+                disabled={isSubmitting}
+                className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                  focusedField === "phone" ? "text-black" : "text-black/50"
                 }`}
               />
             </div>
@@ -177,10 +243,12 @@ export function PlanYourVisitContactForm() {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              onFocus={() => setFocusedField('subject')}
+              onFocus={() => setFocusedField("subject")}
               onBlur={() => setFocusedField(null)}
-              className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg ${
-                focusedField === 'subject' ? 'text-black' : 'text-black/50'
+              required
+              disabled={isSubmitting}
+              className={`w-full px-6 py-4 border-2 border-black/80 rounded-full outline-none transition-all duration-200 focus:border-black focus:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                focusedField === "subject" ? "text-black" : "text-black/50"
               }`}
             />
           </motion.div>
@@ -198,22 +266,40 @@ export function PlanYourVisitContactForm() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              onFocus={() => setFocusedField('message')}
+              onFocus={() => setFocusedField("message")}
               onBlur={() => setFocusedField(null)}
               rows={5}
-              className={`w-full px-6 py-4 border-2 border-black/80 rounded-4xl outline-none transition-all duration-200 focus:border-black focus:shadow-lg resize-none ${
-                focusedField === 'message' ? 'text-black' : 'text-black/50'
+              required
+              disabled={isSubmitting}
+              className={`w-full px-6 py-4 border-2 border-black/80 rounded-4xl outline-none transition-all duration-200 focus:border-black focus:shadow-lg resize-none disabled:opacity-50 disabled:cursor-not-allowed ${
+                focusedField === "message" ? "text-black" : "text-black/50"
               }`}
             />
           </motion.div>
+
+          {/* Result Message */}
+          {result && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`mb-6 text-center py-4 px-6 rounded-xl ${
+                result.includes("Thank you")
+                  ? "bg-green-100 text-green-800 border border-green-300"
+                  : "bg-red-100 text-red-800 border border-red-300"
+              }`}
+            >
+              {result}
+            </motion.div>
+          )}
 
           {/* Submit Button */}
           <motion.div variants={itemVariants}>
             <button
               type="submit"
-              className="w-full font-display bg-black text-white py-5 rounded-full text-[14px] font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-black/90"
+              disabled={isSubmitting}
+              className="w-full font-display bg-black text-white py-5 rounded-full text-[14px] font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              LET US KNOW YOU'RE COMING
+              {isSubmitting ? "Submitting..." : "LET US KNOW YOU'RE COMING"}
             </button>
           </motion.div>
         </form>
