@@ -1,4 +1,10 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 export function CallToAction() {
+  const router = useRouter();
+
   return (
     <section className="bg-white py-20 px-6 md:px-[80px]">
       <div className="max-w-5xl mx-auto text-center">
@@ -14,10 +20,16 @@ export function CallToAction() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="bg-black text-white border-2 border-black px-10 py-4 rounded-full text-lg font-medium tracking-wide hover:bg-white hover:text-black transition-colors">
+          <button
+            onClick={() => router.push('/plan-your-visit')}
+            className="bg-black text-white border-2 border-black px-10 py-4 rounded-full text-lg font-medium tracking-wide hover:bg-white hover:text-black transition-colors"
+          >
             PLAN YOUR VISIT
           </button>
-          <button className="bg-transparent text-black border-2 border-black px-10 py-4 rounded-full text-lg font-medium tracking-wide hover:bg-black hover:text-white transition-colors">
+          <button
+            onClick={() => router.push('/contact')}
+            className="bg-transparent text-black border-2 border-black px-10 py-4 rounded-full text-lg font-medium tracking-wide hover:bg-black hover:text-white transition-colors"
+          >
             CONTACT US
           </button>
         </div>

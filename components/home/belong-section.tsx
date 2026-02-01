@@ -2,12 +2,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const cards = [
   {
     id: 1,
     category: 'WHO WE ARE',
     title: 'ABOUT US',
+    link: '/about',
     image: 'https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://s3-alpha-sig.figma.com/img/423e/b026/efbe57a7d304cf8c706b8119f87565fd?Expires=1770595200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FQ6hN-nq~0IYab8VZHSAipRLSTnxQbgX6xX9Az9PuCC-jegUSH9gV~7i3JXYAu9U9EO6xt3k~Nedj-ghChTJQ~5CXt1A~3vp49vNHDj0DR8m6sjsmhSM4u~tJJaqO0pG4qDHIk78cWVcZOa3BjsNIxZdIZ0LOLgeO4XnoTtp-eAoVQR-qIHRayr1WCiSCm6tmsVttrSXxndxXStBpWf8T0bzEIIx78G6lOXaR3NHfYeKH8~zod1-96~HQyu8yoKcerD2pK-WDRexMlMtWx2M1Odu0UoloxS9eCQDLOB1pUnXlpb8nr2HNBTNTmpivdW7pB0XslFzGDvNNtpTIv9dNg__',
   },
   {
@@ -37,6 +39,7 @@ const cards = [
 ];
 
 export const BelongSection = () => {
+  const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -148,6 +151,7 @@ export const BelongSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
+              onClick={() => card.link && router.push(card.link)}
               className="relative flex-shrink-0 w-[85vw] md:w-[400px] h-[500px] rounded-lg overflow-hidden group cursor-pointer snap-center"
             >
               {/* Background Image */}

@@ -1,14 +1,13 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
 
 export function CTASection() {
+  const router = useRouter();
+
   const handleContactClick = () => {
-    // Scroll to contact form or handle contact action
-    const contactForm = document.querySelector('#contact-form');
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: 'smooth' });
-    }
+    router.push('/contact');
   };
 
   return (
@@ -51,7 +50,7 @@ export function CTASection() {
         >
           <motion.button
             onClick={handleContactClick}
-            className="px-14 py-[14px] font-display border-[2.5px] border-black rounded-full text-[13px] md:text-[14px] font-semibold tracking-[0.08em] uppercase bg-transparent hover:bg-black hover:text-white transition-all duration-300"
+            className="px-14 py-3.5 font-display border-[2.5px] border-black rounded-full text-[13px] md:text-[14px] font-semibold tracking-[0.08em] uppercase bg-transparent hover:bg-black hover:text-white transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300 }}
