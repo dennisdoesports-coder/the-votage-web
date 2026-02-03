@@ -27,6 +27,7 @@ export function LeadPastors() {
                 fill
                 className="w-full h-auto rounded-3xl object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                style={{ objectPosition: 'center 20%' }}
               />
             </div>
             <div className="space-y-6">
