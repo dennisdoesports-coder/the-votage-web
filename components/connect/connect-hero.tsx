@@ -28,7 +28,7 @@ export default function ConnectHero() {
       <div className="relative z-10 flex items-center min-h-screen h-full px-6 sm:px-6 lg:px-20 max-w-[1440px] mx-auto">
         <div className="max-w-4xl">
           {/* Heading */}
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-[1.1] uppercase tracking-tight">
+          <h1 className="font-copperplate text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-[1.1] uppercase tracking-tight">
             Welcome to the<br />
             Connect System<br />
             of The Votage
@@ -40,7 +40,7 @@ export default function ConnectHero() {
           </p>
 
           {/* CTA Button */}
-          <Button className="font-display bg-white text-black hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-colors">
+          <Button className="font-copperplate bg-white text-black hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-colors">
             JOIN A CONNECT
           </Button>
         </div>

@@ -114,7 +114,7 @@ export default function MediaSermons() {
     >
       <div className="max-w-[1400px] mx-auto">
         {/* Title */}
-        <h1 className="text-3xl font-display sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-8 md:mb-12 lg:mb-16 tracking-tight">
+        <h1 className="text-3xl font-copperplate sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-tight mb-8 md:mb-12 lg:mb-16 tracking-tight">
           ACCESS OUR MEDIA<br />AND SERMONS
         </h1>
 

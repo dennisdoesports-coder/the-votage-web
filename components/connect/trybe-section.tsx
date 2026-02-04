@@ -42,7 +42,7 @@ export default function TrybeSection() {
 
           {/* Right side - Content */}
           <div className="flex flex-col items-center text-center md:items-end md:text-right">
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-black text-white md:text-black mb-4 leading-tight uppercase">
+            <h2 className="font-copperplate text-2xl md:text-3xl lg:text-4xl font-black text-white md:text-black mb-4 leading-tight uppercase">
               Your Trybe is Waiting
             </h2>
 
@@ -50,7 +50,7 @@ export default function TrybeSection() {
               While Connect Groups focus on interests and stages of life, Trybes focus on proximity—ensuring you are never too far from your church family.
             </p>
 
-            <Button className="font-display bg-white text-black hover:bg-gray-50 px-8 py-4 font-bold text-sm uppercase rounded-full shadow-[0_4px_0_0_rgba(0,0,0,1)] border-2 border-black transition-all hover:shadow-[0_2px_0_0_rgba(0,0,0,1)] hover:translate-y-[2px]">
+            <Button className="font-copperplate bg-white text-black hover:bg-gray-50 px-8 py-4 font-bold text-sm uppercase rounded-full shadow-[0_4px_0_0_rgba(0,0,0,1)] border-2 border-black transition-all hover:shadow-[0_2px_0_0_rgba(0,0,0,1)] hover:translate-y-[2px]">
               Link to Trybe
             </Button>
           </div>
