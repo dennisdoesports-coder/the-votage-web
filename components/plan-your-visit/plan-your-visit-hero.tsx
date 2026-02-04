@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 export function PlanYourVisitHero() {
   return (
     <div 
-      className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen bg-cover bg-center bg-no-repeat"
+      className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen bg-cover bg-center bg-no-repeat bg-gray-800"
       style={{ backgroundImage: `url(/img/plan-your-visit/hero-bg.png)` }}
     >
       {/* Overlay for better text readability */}

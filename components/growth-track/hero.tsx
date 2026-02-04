@@ -8,7 +8,7 @@ export default function HeroSection() {
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image with Overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center bg-gray-800"
         style={{
           backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%), url(/img/gta/hero-bg.png)`,
         }}
