@@ -19,7 +19,7 @@ function HeroContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
         >
-          <p className="whitespace-pre-wrap text-[18px] md:text-[24px]">New Enrollment Form</p>
+          <p className="whitespace-pre-wrap font-display text-[18px] md:text-[24px]">New Enrollment Form</p>
         </motion.div>
       </div>
     </div>

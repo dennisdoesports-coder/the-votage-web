@@ -68,7 +68,7 @@ export function MultiSelect({
       transition={{ duration: 0.5, delay }}
     >
       <div className="flex flex-col font-['Arial',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#6d6d6d] text-[14px] w-full">
-        <p className="leading-[normal] font-bold text-black whitespace-pre-wrap">
+        <p className="leading-[normal] font-display font-bold text-black whitespace-pre-wrap">
           {label} {maxSelect > 1 && `(${selected.length}/${maxSelect} max)`}
         </p>
       </div>
