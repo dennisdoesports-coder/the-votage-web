@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+function BlurPlaceholder() {
+  return <div className="absolute inset-0 bg-gray-200 animate-pulse" />;
+}
+
 export default function WhyJoinSection() {
   const reasons = [
     {
@@ -28,14 +32,17 @@ export default function WhyJoinSection() {
     <section className="w-full py-16 md:py-24 bg-white px-4 relative overflow-hidden">
       {/* Mobile Background Image with Gradient Overlay */}
       <div className="absolute inset-0 md:hidden">
+        <BlurPlaceholder />
         <Image
           src="/img/why-you-should-join-a-connect-group.png"
           alt="Connect Group"
           fill
-          className="object-cover"
+          className="object-cover relative z-10"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
         />
         {/* Gradient overlay - darker at top and bottom for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 z-20"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -61,11 +68,14 @@ export default function WhyJoinSection() {
           {/* Right side - Image (Desktop only) */}
           <div className="hidden md:block">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+              <BlurPlaceholder />
               <Image
                 src="/img/why-you-should-join-a-connect-group.png"
                 alt="Connect Group"
                 fill
-                className="object-cover"
+                className="object-cover relative z-10"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
               />
             </div>
           </div>

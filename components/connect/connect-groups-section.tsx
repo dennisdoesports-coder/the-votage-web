@@ -5,6 +5,10 @@ import Image from "next/image";
 import { MapPin, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
+function BlurPlaceholder() {
+  return <div className="absolute inset-0 bg-gray-200 animate-pulse" />;
+}
+
 export default function ConnectGroupsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   
@@ -96,11 +100,14 @@ export default function ConnectGroupsSection() {
               <div key={group.id} className="relative rounded-xl w-[200px] flex-shrink-0 overflow-hidden shadow-md group cursor-pointer">
                 {/* Background Image */}
                 <div className="relative w-full h-[280px]">
+                  <BlurPlaceholder />
                   <Image
                     src="/img/connect-images.png"
                     alt={group.name}
                     fill
-                    className="object-cover"
+                    className="object-cover relative z-10"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
                   />
                   
                   {/* Arrow Icon */}

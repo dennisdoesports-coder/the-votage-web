@@ -1,20 +1,27 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+function BlurPlaceholder() {
+  return <div className="absolute inset-0 bg-gray-200 animate-pulse" />;
+}
+
 export default function ConnectHero() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
+        <BlurPlaceholder />
         <Image
           src="/img/connect-page-hero-section-page..png"
           alt="Connect Hero"
           fill
-          className="object-cover object-top"
+          className="object-cover object-top relative z-10"
           priority
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
         />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/50 z-20"></div>
       </div>
 
       {/* Content */}

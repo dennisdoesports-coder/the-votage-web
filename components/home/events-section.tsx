@@ -39,7 +39,7 @@ export const EventsSection = () => {
               key={event.id} 
               className="bg-white rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-xl transition-shadow duration-300 p-3 flex flex-col gap-4"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden rounded relative">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded relative bg-gray-200">
                 <Image 
                   src={event.image} 
                   alt={event.title}
