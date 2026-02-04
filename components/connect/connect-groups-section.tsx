@@ -61,7 +61,7 @@ export default function ConnectGroupsSection() {
         <div className="mb-8">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1 text-center">
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight uppercase">
+              <h2 className="font-copperplate text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight uppercase">
                 FIND A CONNECT THAT FITS INTO<br />
                 YOUR SCHEDULE
               </h2>
@@ -124,7 +124,7 @@ export default function ConnectGroupsSection() {
                   
                   {/* Content Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="font-display text-white font-black mb-3 text-sm uppercase leading-tight">{group.name}</h3>
+                    <h3 className="font-copperplate text-white font-black mb-3 text-sm uppercase leading-tight">{group.name}</h3>
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">

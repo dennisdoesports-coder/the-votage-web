@@ -29,7 +29,7 @@ export const EventsSection = () => {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
-        <h2 className="font-display font-bold text-3xl lg:text-5xl text-black uppercase text-center mb-16">
+        <h2 className="font-copperplate font-bold text-3xl lg:text-5xl text-black uppercase text-center mb-16">
           Up Coming Events
         </h2>
 
@@ -50,8 +50,8 @@ export const EventsSection = () => {
                 />
               </div>
               <div className="px-2 pb-4">
-                <h3 className="font-display text-xl text-black mb-1">{event.title}</h3>
-                <p className="font-display text-base text-black mb-2">{event.subtitle}</p>
+                <h3 className="font-copperplate text-xl text-black mb-1">{event.title}</h3>
+                <p className="font-copperplate text-base text-black mb-2">{event.subtitle}</p>
                 <p className="font-body text-xs text-[#959595]">{event.date}</p>
               </div>
             </div>

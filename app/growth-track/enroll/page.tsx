@@ -53,12 +53,12 @@ export default function EnrollmentPage() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 content-stretch flex flex-col items-center w-full max-w-[965px] z-10 px-6">
           <div className="content-stretch flex flex-col gap-[24px] items-center leading-[0] not-italic relative shrink-0 text-center">
             <motion.div
-              className="flex flex-col font-['Copperplate',sans-serif] font-bold justify-center relative shrink-0 text-white tracking-[1.44px] uppercase"
+              className="flex flex-col font-copperplate font-bold justify-center relative shrink-0 text-white tracking-[1.44px] uppercase"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             >
-              <p className="whitespace-pre-wrap text-[48px] md:text-[64px] lg:text-[72px] leading-[1]">
+              <p className="whitespace-pre-wrap text-[48px] md:text-[64px] lg:text-hero-heading leading-[1]">
                 GROWTH TRACK
               </p>
             </motion.div>

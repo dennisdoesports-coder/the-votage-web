@@ -16,7 +16,7 @@ export function LeadPastors() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-display md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
+          <h2 className="text-3xl font-copperplate md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
             MEET OUR LEAD PASTORS
           </h2>
           <p className="text-base md:text-lg max-w-2xl mx-auto">

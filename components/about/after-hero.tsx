@@ -29,7 +29,7 @@ export function AfterHero() {
 
           {/* Right: Content */}
           <div className="space-y-8 w-full">
-            <h1 className="text-3xl text-black font-display md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
+            <h1 className="text-3xl text-black font-copperplate md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
               COMPELLED BY LOVE<br />TO REACH ALL.
             </h1>
 
