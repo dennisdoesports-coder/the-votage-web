@@ -1,19 +1,26 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+function BlurPlaceholder() {
+  return <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />;
+}
+
 export default function TrybeSection() {
   return (
     <section className="w-full py-16 md:py-24 bg-white px-4 relative">
       {/* Mobile Background Image */}
       <div className="absolute inset-0 md:hidden">
+        <BlurPlaceholder />
         <Image
           src="/img/connect-images.png"
           alt="Trybe"
           fill
-          className="object-cover"
+          className="object-cover relative z-10"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
         />
         {/* Dark overlay for text visibility */}
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/70 z-20"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -21,11 +28,14 @@ export default function TrybeSection() {
           {/* Left side - Image (Desktop only) */}
           <div className="hidden md:block">
             <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
+              <BlurPlaceholder />
               <Image
                 src="/img/connect-images.png"
                 alt="Trybe"
                 fill
-                className="object-cover"
+                className="object-cover relative z-10"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAxEPwAB//9k="
               />
             </div>
           </div>

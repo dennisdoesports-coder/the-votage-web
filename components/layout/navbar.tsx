@@ -82,12 +82,29 @@ export const Navbar = ({ darkText = false }: NavbarProps) => {
       `}>
         {/* Logo */}
         <motion.div
-          className="shrink-0 rounded-full overflow-hidden bg-white/10"
+          className="shrink-0 rounded-full overflow-hidden bg-white/10 cursor-pointer"
           animate={{
             width: isScrolled ? '3.5rem' : '3.75rem',
             height: isScrolled ? '3.5rem' : '3.75rem',
+            scale: [1, 1.05, 1, 1, 1.05, 1],
+            rotate: [0, 0, 0, 360, 360, 360],
           }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeInOut',
+            scale: {
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 4,
+              ease: 'easeInOut',
+            },
+            rotate: {
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 4,
+              ease: 'easeInOut',
+            },
+          }}
         >
           <Logo />
         </motion.div>

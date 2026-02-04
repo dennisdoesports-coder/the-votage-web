@@ -16,7 +16,7 @@ export function ContactHero() {
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
         <div 
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full bg-cover bg-center bg-gray-400"
           style={{ backgroundImage: `url(/img/contact/hero.png)` }}
         />
       </motion.div>
