@@ -19,7 +19,7 @@ export default function TransferCard({
   return (
     <div
       style={{ borderColor: bordercolor }}
-      className={`rounded-2xl border-l-5 shadow-lg  px-4 py-6 bg-white`}
+      className={`rounded-2xl border-l-5 shadow-[5px_5px_5px_rgba(0,0,0,0.2)]  px-4 py-6 bg-white`}
     >
       {/* Header */}
       <div className="flex flex-col items-center mb-6">
