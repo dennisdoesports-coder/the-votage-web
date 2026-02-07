@@ -30,7 +30,7 @@ export default function TransferCard({
           height={30}
           className="mb-3"
         />{" "}
-        <h3 className="text-black font-display">{data.title}</h3>
+        <h3 className="text-black font-display-light">{data.title}</h3>
       </div>
 
       {/* Beneficiary */}
@@ -45,7 +45,7 @@ export default function TransferCard({
       </div>
 
       {/* Transfer Route */}
-      <h4 className="font-display text-black text-center mb-3">
+      <h4 className="font-display-light text-black text-center mb-3">
         TRANSFER ROUTE
       </h4>
 

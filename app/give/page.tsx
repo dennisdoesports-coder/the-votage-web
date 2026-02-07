@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { GiveHero } from "@/components/give/give-hero";
 import JoinMission from "@/components/give/join-mission";
 import InternationalTransfer from "@/components/give/international-transfer";
+import WhereGiving from "@/components/give/where-giving";
 
 export default function GivePage() {
   return (
@@ -13,6 +14,7 @@ export default function GivePage() {
         <GiveHero />
         <JoinMission />
         <InternationalTransfer />
+        <WhereGiving />
       </main>
 
       <Footer />

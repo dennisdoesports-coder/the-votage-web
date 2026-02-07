@@ -15,7 +15,7 @@ export function CopyField({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-3">
       <div>
-        <p className="text-xs text-gray-500">{label}</p>
+        <p className="text-xs text-gray-500 mb-2">{label}</p>
         <p className="font-semibold text-sm text-black">{value}</p>
       </div>
 

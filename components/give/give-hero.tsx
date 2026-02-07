@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export const GiveHero = () => {
   return (
-    <div className="relative w-full h-screen min-h-200 flex items-center lg:px-20  overflow-hidden">
+    <div className="relative w-full h-screen min-180 flex items-center lg:px-20  overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -26,7 +26,7 @@ export const GiveHero = () => {
           className="font-display font-bold text-white uppercase tracking-[0.02em] leading-[1em]
                      text-4xl md:text-6xl lg:text-[72px] mb-6"
         >
-           Giving
+          Giving
         </motion.h1>
 
         {/* Subheadline */}

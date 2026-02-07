@@ -21,7 +21,7 @@ export default function LocalPayment() {
           height={30}
           className="mb-4"
         />
-        <h1 className="font-display text-black">Bank Transfer</h1>
+        <h1 className="font-display-light text-black">Bank Transfer</h1>
       </div>
 
       <div className="bg-linear-90 from-[#c145ff61] to-[#1FDDF261] rounded-lg p-6">

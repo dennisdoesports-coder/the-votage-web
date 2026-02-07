@@ -12,7 +12,7 @@ export default function InternationalPayment() {
           height={30}
           className="mb-4"
         />
-        <h1 className="font-display text-black">Bank Transfer</h1>
+        <h1 className="font-display-light text-black">Bank Transfer</h1>
       </div>
 
       <div className="mt-3">
