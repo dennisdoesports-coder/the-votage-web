@@ -5,6 +5,10 @@ import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
+function BlurPlaceholder() {
+  return <div className="absolute inset-0 bg-gray-200 animate-pulse" />;
+}
+
 export default function ConnectGroupsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -92,7 +96,7 @@ export default function ConnectGroupsSection() {
         <div className="mb-10">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1 text-center">
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight uppercase">
+              <h2 className="font-copperplate text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight uppercase">
                 FIND A CONNECT THAT FITS INTO<br />
                 YOUR SCHEDULE
               </h2>

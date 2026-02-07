@@ -14,6 +14,7 @@ const navLinks = [
   { name: 'Sermons', hasDropdown: false },
   { name: 'Give', hasDropdown: false },
   { name: 'Contact', hasDropdown: true },
+  { name: 'Growth Track', href: '/growth-track', hasDropdown: false },
 ];
 
 interface NavbarProps {
@@ -82,12 +83,29 @@ export const Navbar = ({ darkText = false }: NavbarProps) => {
       `}>
         {/* Logo */}
         <motion.div
-          className="shrink-0 rounded-full overflow-hidden bg-white/10"
+          className="shrink-0 rounded-full overflow-hidden bg-white/10 cursor-pointer"
           animate={{
             width: isScrolled ? '3.5rem' : '3.75rem',
             height: isScrolled ? '3.5rem' : '3.75rem',
+            scale: [1, 1.05, 1, 1, 1.05, 1],
+            rotate: [0, 0, 0, 360, 360, 360],
           }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeInOut',
+            scale: {
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 4,
+              ease: 'easeInOut',
+            },
+            rotate: {
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 4,
+              ease: 'easeInOut',
+            },
+          }}
         >
           <Logo />
         </motion.div>
@@ -104,7 +122,7 @@ export const Navbar = ({ darkText = false }: NavbarProps) => {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <Link
-                href={`/${link.name.toLowerCase()}`}
+                href={link.href || `/${link.name.toLowerCase().replace(/\s+/g, '-')}`}
                 className="flex items-center gap-1.5"
               >
                 {link.name}
@@ -170,7 +188,7 @@ export const Navbar = ({ darkText = false }: NavbarProps) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Link href={`/${link.name.toLowerCase()}`} className="flex items-center gap-2">
+                  <Link href={link.href || `/${link.name.toLowerCase().replace(/\s+/g, '-')}`} className="flex items-center gap-2">
                     {link.name}
                     {link.hasDropdown && <ChevronDown className="w-4 h-4" />}
                   </Link>
