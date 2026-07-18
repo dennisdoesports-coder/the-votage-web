@@ -10,7 +10,7 @@ export const HeroSection = () => {
     <div className="relative w-full h-screen min-h-200 flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/img/hero-image.jpg"
+        src="/img/HERO2.jpg"
         alt="Hero Background"
         fill
         className="object-cover"

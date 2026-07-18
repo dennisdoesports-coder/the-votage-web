@@ -7,27 +7,27 @@ import gsap from 'gsap';
 const images = [
   {
     id: 0, // Far Left (Duplicate for layout balance)
-    url: "/img/about/hero-1.jpg",
+    url: "/img/ABOUT1.jpg",
     alt: "Community gathering"
   },
   {
     id: 1, // Left
-    url: "/img/connect-images.png",
+    url: "/img/PRAISE.JPG",
     alt: "Worship service"
   },
   {
     id: 2, // Center (Speaker)
-    url: "/img/about/hero-3.jpg",
+    url: "/img/ABOUT7.jpg",
     alt: "Speaker on stage"
   },
   {
     id: 3, // Right
-    url: "/img/about/hero-2.jpg",
+    url: "/img/ABOUT5.jpg",
     alt: "Community gathering"
   },
   {
     id: 5, // Far Right (Duplicate for layout balance)
-    url: "/img/about/hero-4.jpg",
+    url: "/img/ABOUT2.jpg",
     alt: "Worship service"
   }
 ];
@@ -86,16 +86,16 @@ export const GallerySection: React.FC = () => {
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
     // Cancel any ongoing animations on the target
     gsap.killTweensOf(e.currentTarget);
-    
+
     // Smooth scale up with enhanced effects
-    gsap.to(e.currentTarget, { 
-      scale: 1.08, 
+    gsap.to(e.currentTarget, {
+      scale: 1.08,
       y: -15,
       zIndex: 50,
       boxShadow: "0px 20px 40px rgba(0,0,0,0.2)",
       borderRadius: "50px",
-      duration: 0.5, 
-      ease: "power3.out" 
+      duration: 0.5,
+      ease: "power3.out"
     });
 
     // Brighten the image
@@ -111,16 +111,16 @@ export const GallerySection: React.FC = () => {
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
     // Cancel any ongoing animations on the target
     gsap.killTweensOf(e.currentTarget);
-    
+
     // Return to original state with smooth transition
-    gsap.to(e.currentTarget, { 
-      scale: 1, 
+    gsap.to(e.currentTarget, {
+      scale: 1,
       y: 0,
       zIndex: 1,
       boxShadow: "0px 4px 6px -1px rgba(0, 0, 0, 0.1)",
       borderRadius: "40px",
-      duration: 0.5, 
-      ease: "power3.out" 
+      duration: 0.5,
+      ease: "power3.out"
     });
 
     // Reset image brightness
@@ -139,13 +139,13 @@ export const GallerySection: React.FC = () => {
     <div ref={containerRef} className="w-full relative overflow-hidden py-16 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent">
       {/* Decorative gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
-      
-      <div 
+
+      <div
         ref={trackRef}
         className="flex justify-center items-end gap-4 md:gap-6 px-4 min-w-max md:min-w-0 relative z-10"
       >
         {images.map((img, index) => (
-          <div 
+          <div
             key={img.id}
             className={`
               gallery-item relative flex-shrink-0 
@@ -169,13 +169,13 @@ export const GallerySection: React.FC = () => {
             />
             {/* Enhanced overlay with gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 transition-opacity duration-300 pointer-events-none" />
-            
+
             {/* Subtle border glow on hover */}
             <div className="absolute inset-0 border-2 border-white/20 rounded-[40px] md:rounded-[50px] opacity-0 transition-opacity duration-300 pointer-events-none" />
           </div>
         ))}
       </div>
-      
+
       {/* Bottom fade effect */}
       <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </div>
