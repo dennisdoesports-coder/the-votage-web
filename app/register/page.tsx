@@ -4,7 +4,7 @@ import Link from "next/link";
 import PhoneInput from "react-phone-input-2";
 // import "react-phone-input-2/lib/style.css";
 import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, Suspense, useEffect, useMemo, useState } from "react";
 import styles from "./register.module.css";
 import ChatWidget from "@/components/ui/Chatwidget";
 
@@ -19,7 +19,7 @@ const DEFAULT_CONNECT_OPTIONS = [
 ];
 const DEFAULT_SERVICE_OPTIONS = ["sunday_service", "connect", "special_service"];
 
-export default function RegisterPage() {
+function RegisterPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const base = process.env.NEXT_PUBLIC_API_BASE || "";
@@ -323,5 +323,13 @@ export default function RegisterPage() {
         </section>
       </div>
     </main>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterPageContent />
+    </Suspense>
   );
 }
