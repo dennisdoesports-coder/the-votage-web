@@ -32,9 +32,31 @@ interface ProxyMethods {
   OPTIONS: () => NextResponse
 }
 
+function normalizeBackendBase(value: string) {
+  const trimmed = value.trim()
+
+  try {
+    const url = new URL(trimmed)
+    const isLocalHost =
+      url.hostname === 'localhost' ||
+      url.hostname === '127.0.0.1' ||
+      url.hostname === '0.0.0.0'
+
+    if (isLocalHost && url.protocol === 'https:') {
+      url.protocol = 'http:'
+      return url.toString()
+    }
+  } catch {
+    return trimmed
+  }
+
+  return trimmed
+}
+
 export function createProxyRoute(targetPath: string): ProxyMethods {
-  const backendBase =
+  const backendBase = normalizeBackendBase(
     process.env.BACKEND_URL || 'http://13.60.168.165:8000'
+  )
 
   async function proxy(req: NextRequest) {
     const target = new URL(targetPath, backendBase)
@@ -46,11 +68,25 @@ export function createProxyRoute(targetPath: string): ProxyMethods {
         ? undefined
         : await req.text()
 
-    const upstream = await fetch(target, {
-      method: req.method,
-      headers: incomingHeaders,
-      body,
-    })
+    let upstream: Response
+    try {
+      upstream = await fetch(target, {
+        method: req.method,
+        headers: incomingHeaders,
+        body,
+      })
+    } catch (error) {
+      const detail =
+        error instanceof Error ? error.message : 'Failed to reach backend service'
+
+      return NextResponse.json(
+        {
+          detail,
+          target: target.toString(),
+        },
+        { status: 502 }
+      )
+    }
 
     const respHeaders = filterHeaders(upstream.headers)
     const respBody = await upstream.arrayBuffer()
