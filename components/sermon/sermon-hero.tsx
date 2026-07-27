@@ -8,7 +8,7 @@ export const SermonHero = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 bg-gray-800"
-        style={{ backgroundImage: "url('/img/sermon/sermon-hero.png')" }}
+        style={{ backgroundImage: "url('/img/sermon-bg.jpg')" }}
         aria-hidden="true"
       />
 

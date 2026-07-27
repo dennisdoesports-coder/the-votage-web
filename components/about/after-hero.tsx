@@ -15,7 +15,7 @@ export function AfterHero() {
             <div className="rounded-3xl w-full object-cover h-full max-h-[700px] overflow-hidden">
               <BlurPlaceholder />
               <Image
-                src="/img/about/compelled-by-love.jpg"
+                src="/img/cbl.jpg"
                 alt="Rev-holding-mic"
                 width={800}
                 height={600}
