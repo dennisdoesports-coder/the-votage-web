@@ -3,8 +3,8 @@
 import Link from "next/link";
 import PhoneInput from "react-phone-input-2";
 // import "react-phone-input-2/lib/style.css";
-import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, Suspense, useEffect, useMemo, useState } from "react";
 import styles from "./register.module.css";
 import ChatWidget from "@/components/ui/Chatwidget";
 
@@ -19,8 +19,9 @@ const DEFAULT_CONNECT_OPTIONS = [
 ];
 const DEFAULT_SERVICE_OPTIONS = ["sunday_service", "connect", "special_service"];
 
-export default function RegisterPage() {
+function RegisterPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const base = process.env.NEXT_PUBLIC_API_BASE || "";
   const [activeTab, setActiveTab] = useState<"checkin" | "register">("checkin");
   const [busy, setBusy] = useState(false);
@@ -38,6 +39,23 @@ export default function RegisterPage() {
   const [connectName, setConnectName] = useState(DEFAULT_CONNECT_OPTIONS[0]);
 
   const showConnect = useMemo(() => serviceType === "connect", [serviceType]);
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    setActiveTab(tab === "register" || tab === "registration" ? "register" : "checkin");
+  }, [searchParams]);
+
+  function switchTab(tab: "checkin" | "register") {
+    setActiveTab(tab);
+    const params = new URLSearchParams(searchParams.toString());
+    if (tab === "register") {
+      params.set("tab", "registration");
+    } else {
+      params.delete("tab");
+    }
+    const query = params.toString();
+    router.replace(query ? `/register?${query}` : "/register");
+  }
 
   useEffect(() => {
     async function loadOptions() {
@@ -166,13 +184,13 @@ export default function RegisterPage() {
 
         <nav className={styles.tabs}>
           <button
-            onClick={() => setActiveTab("checkin")}
+            onClick={() => switchTab("checkin")}
             className={`${styles.tabButton} ${activeTab === "checkin" ? styles.tabButtonActive : ""}`}
           >
             Check-in
           </button>
           <button
-            onClick={() => setActiveTab("register")}
+            onClick={() => switchTab("register")}
             className={`${styles.tabButton} ${activeTab === "register" ? styles.tabButtonActive : ""}`}
           >
             New Member Registration
@@ -305,5 +323,13 @@ export default function RegisterPage() {
         </section>
       </div>
     </main>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterPageContent />
+    </Suspense>
   );
 }
