@@ -9,7 +9,7 @@ export const GiveHero = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: "url(/img/give/hero.png)" }}
+        style={{ backgroundImage: "url(/img/HERO3.jpg)" }}
         aria-hidden="true"
       />
 

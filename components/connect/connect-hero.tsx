@@ -14,7 +14,7 @@ export default function ConnectHero() {
       <div className="absolute inset-0 h-full w-full" style={{ clipPath: 'inset(0 0 0% 0)' }}>
         <BlurPlaceholder />
         <Image
-          src="/img/connect-page-hero-section-page..png"
+          src="/img/connect-bg.jpg"
           alt="Connect Hero"
           fill
           className="object-cover object-top relative z-10 h-full w-full"

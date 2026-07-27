@@ -35,10 +35,10 @@ export function LeadPastors() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
               <BlurPlaceholder />
               <Image
-                src="/img/serm-rev.jpg"
+                src="/img/rev-pics.jpg"
                 alt="Rev. Ohis Ojeikere preaching"
                 fill
-                style={{ objectPosition: "center 20%" }}
+                style={{ objectPosition: "center 5%" }}
                 className="w-full h-auto rounded-3xl object-cover relative z-10"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 placeholder="blur"
@@ -89,7 +89,7 @@ export function LeadPastors() {
             <div className="relative aspect-[4/3] lg:order-2 overflow-hidden rounded-3xl">
               <BlurPlaceholder />
               <Image
-                src="/img/about/FL.jpg"
+                src="/img/Fl.jpg"
                 style={{ objectPosition: "center 20%" }}
                 alt="Pastor Anwinli Ojeikere speaking"
                 fill
