@@ -246,6 +246,7 @@ function RegisterPageContent() {
                   country="ng"
                   value={phoneNumber}
                   onChange={(value) => setPhoneNumber(value)}
+                  specialLabel=""
                   inputProps={{ required: true, name: "phone" }}
                   placeholder="e.g. +234 801 234 5678"
                   containerClass={styles.phoneContainer}

@@ -13,10 +13,25 @@ const HOP_BY_HOP = new Set([
   'content-length',
 ])
 
-function filterHeaders(headers: Headers) {
+const RESPONSE_HEADER_BLOCKLIST = new Set([
+  ...HOP_BY_HOP,
+  'content-encoding',
+])
+
+function filterRequestHeaders(headers: Headers) {
   const out = new Headers()
   for (const [key, value] of headers.entries()) {
     if (!HOP_BY_HOP.has(key.toLowerCase())) {
+      out.set(key, value)
+    }
+  }
+  return out
+}
+
+function filterResponseHeaders(headers: Headers) {
+  const out = new Headers()
+  for (const [key, value] of headers.entries()) {
+    if (!RESPONSE_HEADER_BLOCKLIST.has(key.toLowerCase())) {
       out.set(key, value)
     }
   }
@@ -62,7 +77,7 @@ export function createProxyRoute(targetPath: string): ProxyMethods {
     const target = new URL(targetPath, backendBase)
     target.search = req.nextUrl.search
 
-    const incomingHeaders = filterHeaders(req.headers)
+    const incomingHeaders = filterRequestHeaders(req.headers)
     const body =
       req.method === 'GET' || req.method === 'HEAD'
         ? undefined
@@ -88,7 +103,7 @@ export function createProxyRoute(targetPath: string): ProxyMethods {
       )
     }
 
-    const respHeaders = filterHeaders(upstream.headers)
+    const respHeaders = filterResponseHeaders(upstream.headers)
     const respBody = await upstream.arrayBuffer()
 
     return new NextResponse(respBody, {

@@ -185,7 +185,9 @@ export default function ChatWidget({
     setBusy(true);
     try {
       const base = process.env.NEXT_PUBLIC_API_BASE || "";
+      console.log('base:', base, apiUrl);
       const url = base ? `${base}${apiUrl}` : apiUrl;
+      console.log('url:', url, base, apiUrl);
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
