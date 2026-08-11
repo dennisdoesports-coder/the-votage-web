@@ -180,6 +180,9 @@ function RegisterPageContent() {
           <p className={styles.subtitle}>
             Already a member? Use the <strong>Check-in</strong> tab to mark your attendance. New to our church? Use the <strong>Registration</strong> tab.
           </p>
+          <p className={styles.subtitle} style={{ marginTop: 8 }}>
+            Already checked in as a first timer? Fill your details here: <Link href="/first-timer">First Timer Form</Link>.
+          </p>
         </header>
 
         <nav className={styles.tabs}>
