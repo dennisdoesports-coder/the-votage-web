@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
         hostname: 'i.scdn.co',
         pathname: '/image/**',
       },
+      {
+        // Contentful asset images (hero background, event images)
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        pathname: '/**',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
   },

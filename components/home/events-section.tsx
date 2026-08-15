@@ -1,26 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
+import type { EventItem } from '@/lib/contentful';
 
-const events = [
-  {
-    id: 1,
-    title: 'Refresh Tour 2026',
-    subtitle: 'Across the Globe',
-    date: 'Jan 31, 2026 - Jan 13, 2027',
-    time: null,
-    image: '/img/refresh-tours.jpg'
-  },
-  {
-    id: 2,
-    title: 'Night of Favour',
-    subtitle: 'Every Night With Jesus',
-    date: 'Friday & Saturday, February 20th & 21st, 2026',
-    time: '8:00PM (WAT) daily',
-    image: '/img/night-of-favour.jpeg'
-  }
-];
+interface EventsSectionProps {
+  events: EventItem[];
+}
 
-export const EventsSection = () => {
+export const EventsSection = ({ events }: EventsSectionProps) => {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
@@ -50,6 +36,9 @@ export const EventsSection = () => {
                 <p className="font-body text-xs text-[#4E4E4E]">{event.date}</p>
                 {event.time && (
                   <p className="font-body text-xs text-[#4E4E4E] mt-1">{event.time}</p>
+                )}
+                {event.location && (
+                  <p className="font-body text-xs text-[#4E4E4E] mt-1">{event.location}</p>
                 )}
               </div>
             </div>
