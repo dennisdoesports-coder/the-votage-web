@@ -21,9 +21,11 @@ export const EventsSection = ({ events }: EventsSectionProps) => {
               key={event.id} 
               className="bg-white rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-xl transition-shadow duration-300 p-3 flex flex-col gap-4 group"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden rounded relative bg-gray-200">
-                <Image 
-                  src={event.image} 
+              {/* Event flyers are 4:5 portrait, so the frame matches that ratio --
+                  a landscape frame would crop the poster's title and details away. */}
+              <div className="aspect-[4/5] w-full overflow-hidden rounded relative bg-gray-200">
+                <Image
+                  src={event.image}
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
