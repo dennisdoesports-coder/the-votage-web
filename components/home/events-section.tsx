@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, Clock, MapPin } from 'lucide-react';
 import type { EventItem } from '@/lib/contentful';
 
 interface EventsSectionProps {
@@ -40,13 +40,15 @@ export const EventsSection = ({ events }: EventsSectionProps) => {
                 <dl className="border-t border-gray-100 pt-3 flex flex-col gap-2">
                   <div className="flex items-start gap-2">
                     <Calendar className="w-3.5 h-3.5 mt-px shrink-0 text-[#9A9A9A]" aria-hidden="true" />
-                    <dd className="font-body text-xs text-black leading-snug">
-                      {event.date}
-                      {event.time && (
-                        <span className="block text-[#4E4E4E] mt-0.5">{event.time}</span>
-                      )}
-                    </dd>
+                    <dd className="font-body text-xs text-black leading-snug">{event.date}</dd>
                   </div>
+
+                  {event.time && (
+                    <div className="flex items-start gap-2">
+                      <Clock className="w-3.5 h-3.5 mt-px shrink-0 text-[#9A9A9A]" aria-hidden="true" />
+                      <dd className="font-body text-xs text-[#4E4E4E] leading-snug">{event.time}</dd>
+                    </div>
+                  )}
 
                   {event.location && (
                     <div className="flex items-start gap-2">
