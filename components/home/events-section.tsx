@@ -37,9 +37,6 @@ export const EventsSection = ({ events }: EventsSectionProps) => {
                 {event.time && (
                   <p className="font-body text-xs text-[#4E4E4E] mt-1">{event.time}</p>
                 )}
-                {event.location && (
-                  <p className="font-body text-xs text-[#4E4E4E] mt-1">{event.location}</p>
-                )}
               </div>
             </div>
           ))}
