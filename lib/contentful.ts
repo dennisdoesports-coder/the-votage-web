@@ -91,6 +91,7 @@ export interface EventItem {
   subtitle: string;
   date: string;
   time: string | null;
+  location: string | null;
   image: string;
 }
 
@@ -101,6 +102,7 @@ const defaultEvents: EventItem[] = [
     subtitle: 'Across the Globe',
     date: 'Jan 31, 2026 - Jan 13, 2027',
     time: null,
+    location: null,
     image: '/img/refresh-tours.jpg',
   },
   {
@@ -109,6 +111,7 @@ const defaultEvents: EventItem[] = [
     subtitle: 'Every Night With Jesus',
     date: 'Friday & Saturday, February 20th & 21st, 2026',
     time: '8:00PM (WAT) daily',
+    location: null,
     image: '/img/night-of-favour.jpeg',
   },
 ];
@@ -118,7 +121,15 @@ interface EventFields {
   subtitle?: string;
   date?: string;
   time?: string;
+  // Read as `unknown` and narrowed below: Contentful also ships a "Location"
+  // field type that stores {lon, lat}, and picking it by mistake would
+  // otherwise crash the page when React tries to render the object.
+  location?: unknown;
   image?: { sys: { id: string } };
+}
+
+function textOrNull(value: unknown): string | null {
+  return typeof value === 'string' && value.trim() ? value : null;
 }
 
 export async function getEvents(): Promise<EventItem[]> {
@@ -135,6 +146,7 @@ export async function getEvents(): Promise<EventItem[]> {
         subtitle: f.subtitle ?? '',
         date: f.date ?? '',
         time: f.time ?? null,
+        location: textOrNull(f.location),
         image: image ?? defaultEvents[0].image,
       };
     })

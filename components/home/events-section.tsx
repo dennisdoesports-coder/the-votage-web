@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { MapPin } from 'lucide-react';
 import type { EventItem } from '@/lib/contentful';
 
 interface EventsSectionProps {
@@ -36,6 +37,12 @@ export const EventsSection = ({ events }: EventsSectionProps) => {
                 <p className="font-body text-xs text-[#4E4E4E]">{event.date}</p>
                 {event.time && (
                   <p className="font-body text-xs text-[#4E4E4E] mt-1">{event.time}</p>
+                )}
+                {event.location && (
+                  <p className="font-body text-xs text-[#4E4E4E] mt-2 flex items-start gap-1.5">
+                    <MapPin className="w-3 h-3 mt-0.5 shrink-0" aria-hidden="true" />
+                    <span>{event.location}</span>
+                  </p>
                 )}
               </div>
             </div>
