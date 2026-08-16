@@ -19,7 +19,7 @@ export default function ConnectGroupsSection() {
       id: 1,
       name: "KABOD CONNECT",
       day: "Tuesdays",
-      location: "The Winlos Center, Airport Road Extension",
+      location: "144 Airport Road, After ADP Junction",
       time: "5:00pm",
       image: "/img/connect-images.png",
       leader: "Pst Tobi Tijani",
@@ -30,7 +30,7 @@ export default function ConnectGroupsSection() {
       id: 2,
       name: "NEWNESS CONNECT",
       day: "Wednesdays",
-      location: "The Winlos Center, Airport Road Extension",
+      location: "144 Airport Road, After ADP Junction",
       time: "5:00pm",
       image: "/img/connect-6.jpg",
       leader: "Pst Happysteve Agbonghale",
@@ -41,31 +41,31 @@ export default function ConnectGroupsSection() {
       id: 3,
       name: "GATEKEEPERS CONNECT",
       day: "Thursdays",
-      location: "The Winlos Center, Airport Road Extension",
+      location: "144 Airport Road, After ADP Junction",
       time: "5:00pm",
       image: "/img/connect-4.jpg",
       leader: "Pst Blessing Ochade",
       whatsapp: "+234 706 699 5249",
       message: "Welcome to GATEKEEPERS CONNECT! As gatekeepers of God's kingdom, we gather to pray, intercede, and stand in faith for our community. Join our Wednesday meetings to be part of something powerful and transformative.",
     },
-   
+
     {
       id: 4,
       name: "FLORISH CONNECT",
       day: "Fridays",
-      location: "The Winlos Center, Airport Road Extension",
+      location: "144 Airport Road, After ADP Junctionn",
       time: "5:00pm",
       image: "/img/connect-3.jpg",
       leader: "Pst Osaretin Osarumwense ",
       whatsapp: "+234 805 928 1336",
       message: "FLORISH CONNECT invites you to Thursday nights filled with God's presence and community love. We believe in flourishing together—spiritually, emotionally, and relationally. Experience a connect group where your growth matters and your voice is heard.",
     },
-     {
+    {
       id: 5,
       name: "UGBOWO CONNECT",
       day: "Fridays",
       location: "The Orchard Garden",
-      time: "5:00pm", 
+      time: "5:00pm",
       image: "/img/connect-1.jpg",
       leader: "Min Petry Ebhonu  ",
       whatsapp: "+234 813 613 2716",
@@ -75,7 +75,7 @@ export default function ConnectGroupsSection() {
       id: 6,
       name: "KOINONIA CONNECT",
       day: "Saturdays",
-      location: "The Winlos Center, Airport Road Extension",
+      location: "144 Airport Road, After ADP Junction",
       time: "5:00pm",
       image: "/img/connect-9.jpg",
       leader: "Pst Obianuju Okpala ",
@@ -99,10 +99,10 @@ export default function ConnectGroupsSection() {
     if (scrollContainerRef.current) {
       const scrollAmount = 420; // Width of card + gap
       const currentScroll = scrollContainerRef.current.scrollLeft;
-      const targetScroll = direction === 'left' 
-        ? currentScroll - scrollAmount 
+      const targetScroll = direction === 'left'
+        ? currentScroll - scrollAmount
         : currentScroll + scrollAmount;
-      
+
       scrollContainerRef.current.scrollTo({
         left: targetScroll,
         behavior: 'smooth'
@@ -124,13 +124,13 @@ export default function ConnectGroupsSection() {
     if (container) {
       // Initial check
       updateScrollButtons();
-      
+
       // Listen for scroll events
       container.addEventListener('scroll', updateScrollButtons, { passive: true });
-      
+
       // Also check on resize
       window.addEventListener('resize', updateScrollButtons, { passive: true });
-      
+
       return () => {
         container.removeEventListener('scroll', updateScrollButtons);
         window.removeEventListener('resize', updateScrollButtons);
@@ -141,12 +141,12 @@ export default function ConnectGroupsSection() {
   return (
     <section id="connect-groups" className="bg-[#FFF8F0] py-16 lg:py-24 overflow-hidden">
       <div className="max-w-360 mx-auto px-6 lg:px-20">
-        
+
         {/* Header with Navigation */}
         <div className="mb-10">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1 text-center">
-            <h2 className="font-copperplate text-xl leading-minor-heading lg:text-section-heading font-black px-1 text-black mb-2 md:mb-10 uppercase">
+              <h2 className="font-copperplate text-xl leading-minor-heading lg:text-section-heading font-black px-1 text-black mb-2 md:mb-10 uppercase">
                 FIND A CONNECT THAT FITS INTO<br className="hidden md:block" />
                 YOUR SCHEDULE
               </h2>
@@ -159,42 +159,38 @@ export default function ConnectGroupsSection() {
 
         {/* Navigation Buttons */}
         <div className="flex items-center gap-3 justify-end mb-8">
-          <button 
+          <button
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
-            className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none ring-1 ring-black ${
-              canScrollLeft 
-                ? 'bg-black hover:text-white cursor-pointer' 
+            className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none ring-1 ring-black ${canScrollLeft
+                ? 'bg-black hover:text-white cursor-pointer'
                 : 'opacity-90 cursor-not-allowed'
-            }`}
+              }`}
             aria-label="Scroll left"
           >
-            <ChevronLeft className={`w-6 ${
-              canScrollLeft 
-                ? 'text-white' 
+            <ChevronLeft className={`w-6 ${canScrollLeft
+                ? 'text-white'
                 : 'text-black'
-            } h-6`} />
+              } h-6`} />
           </button>
-          <button 
+          <button
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
-            className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none ring-1 ring-black ${
-              canScrollRight 
-                ? 'bg-black hover:text-white cursor-pointer' 
+            className={`w-12 h-12 rounded-full border border-black/50 flex items-center justify-center transition-colors duration-300 focus:outline-none ring-1 ring-black ${canScrollRight
+                ? 'bg-black hover:text-white cursor-pointer'
                 : 'opacity-90 cursor-not-allowed'
-            }`}
+              }`}
             aria-label="Scroll right"
           >
-            <ChevronRight className={`w-6 ${
-              canScrollRight 
-                ? 'text-white' 
+            <ChevronRight className={`w-6 ${canScrollRight
+                ? 'text-white'
                 : 'text-black'
-            } h-6`} />
+              } h-6`} />
           </button>
         </div>
 
         {/* Scrollable Container */}
-        <div 
+        <div
           ref={scrollContainerRef}
           className="flex gap-6 overflow-x-auto pb-8 -mx-6 px-6 lg:-mx-20 lg:px-20 scrollbar-hide snap-x snap-mandatory"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -224,16 +220,16 @@ export default function ConnectGroupsSection() {
               </div>
 
               {/* Arrow Icon - Larger and more visible */}
-              <button 
+              <button
                 className="absolute top-4 right-4 hover:opacity-80 transition-opacity z-10"
               >
                 <svg className="w-12 h-12 text-white drop-shadow-lg" viewBox="0 0 94 94" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M36.3959 68.1616C24.5383 62.4535 19.5664 48.2515 25.2745 36.3938C30.9826 24.5362 45.1847 19.5643 57.0423 25.2724C68.8999 30.9805 73.8718 45.1826 68.1637 57.0402C62.4556 68.8978 48.2535 73.8698 36.3959 68.1616ZM55.8278 27.7953C45.3578 22.7552 32.8375 27.1383 27.7974 37.6083C22.7572 48.0784 27.1404 60.5986 37.6104 65.6388C48.0804 70.6789 60.6007 66.2957 65.6408 55.8257C70.681 45.3557 66.2978 32.8354 55.8278 27.7953Z" fill="currentColor"/>
-                  <path d="M56.1551 53.9013L50.7252 38.3911L35.215 43.821L34.2992 41.2048L52.4255 34.859L58.7713 52.9854L56.1551 53.9013Z" fill="currentColor"/>
-                  <path d="M50.3145 36.0176L52.8373 37.2321L42.5142 58.6767L39.9913 57.4622L50.3145 36.0176Z" fill="currentColor"/>
+                  <path d="M36.3959 68.1616C24.5383 62.4535 19.5664 48.2515 25.2745 36.3938C30.9826 24.5362 45.1847 19.5643 57.0423 25.2724C68.8999 30.9805 73.8718 45.1826 68.1637 57.0402C62.4556 68.8978 48.2535 73.8698 36.3959 68.1616ZM55.8278 27.7953C45.3578 22.7552 32.8375 27.1383 27.7974 37.6083C22.7572 48.0784 27.1404 60.5986 37.6104 65.6388C48.0804 70.6789 60.6007 66.2957 65.6408 55.8257C70.681 45.3557 66.2978 32.8354 55.8278 27.7953Z" fill="currentColor" />
+                  <path d="M56.1551 53.9013L50.7252 38.3911L35.215 43.821L34.2992 41.2048L52.4255 34.859L58.7713 52.9854L56.1551 53.9013Z" fill="currentColor" />
+                  <path d="M50.3145 36.0176L52.8373 37.2321L42.5142 58.6767L39.9913 57.4622L50.3145 36.0176Z" fill="currentColor" />
                 </svg>
               </button>
-              
+
               {/* Subtle Gradient Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
@@ -317,7 +313,7 @@ export default function ConnectGroupsSection() {
                       <p className="font-display text-lg text-black font-bold">
                         {group.leader}
                       </p>
-                       <p className="text-sm text-gray-600 ">
+                      <p className="text-sm text-gray-600 ">
                         <span className="font-medium text-xs">Phone No.:</span> {group.whatsapp}
                       </p>
                     </div>
