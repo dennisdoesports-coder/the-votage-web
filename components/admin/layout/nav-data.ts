@@ -14,6 +14,7 @@ import {
   Settings,
   Building2,
   Trash2,
+  Heart,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -53,6 +54,16 @@ export const navEntries: NavEntry[] = [
       items: [
         // { href: '/a/members/insights', label: 'Member Insights', icon: UserSearch },
         { href: '/a/members/manage', label: 'Manage Members', icon: UserCog },
+      ],
+    },
+  },
+  {
+    type: 'group',
+    data: {
+      label: 'Connect Groups',
+      icon: Heart,
+      items: [
+        { href: '/a/connect', label: 'All Groups', icon: Heart },
       ],
     },
   },
