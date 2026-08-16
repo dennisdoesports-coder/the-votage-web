@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { X, Menu, LayoutDashboard, TrendingUp, BarChart3, ClipboardCheck, Users, UserSearch, UserCog, UserPlus, Eye, Mail, UserPlus2, FileText, Settings, Building2, Trash2 } from 'lucide-react'
+import { X, Menu, LayoutDashboard, TrendingUp, BarChart3, ClipboardCheck, Users, UserSearch, UserCog, UserPlus, Eye, Mail, UserPlus2, FileText, Settings, Building2, Trash2, Heart } from 'lucide-react'
 import Link from 'next/link'
 import { SidebarItem } from './SidebarItem'
 import { SidebarGroup } from './SidebarGroup'
@@ -133,6 +133,12 @@ export function Sidebar() {
           </NavLink>
         </SidebarGroup>
 
+        <SidebarGroup icon={Heart} label="Connect Groups" collapsed={collapsed}>
+          <NavLink href="/admin/connect" active={isActive('/admin/connect')}>
+            <SidebarItem icon={Heart} label="All Groups" active={isActive('/admin/connect')} collapsed={collapsed} />
+          </NavLink>
+        </SidebarGroup>
+
         <SidebarGroup icon={UserPlus} label="Visitors Report" collapsed={collapsed}>
           <NavLink href="/admin/visitors/tracking" active={isActive('/admin/visitors/tracking')}>
             <SidebarItem icon={Eye} label="Visitors Tracking" active={isActive('/admin/visitors/tracking')} collapsed={collapsed} />
@@ -229,6 +235,11 @@ export function Sidebar() {
             </NavLink> */}
             <NavLink href="/admin/members/manage" active={isActive('/admin/members/manage')}>
               <SidebarItem icon={UserCog} label="Manage Members" active={isActive('/admin/members/manage')} />
+            </NavLink>
+          </SidebarGroup>
+          <SidebarGroup icon={Heart} label="Connect Groups">
+            <NavLink href="/admin/connect" active={isActive('/admin/connect')}>
+              <SidebarItem icon={Heart} label="All Groups" active={isActive('/admin/connect')} />
             </NavLink>
           </SidebarGroup>
           <SidebarGroup icon={UserPlus} label="Visitors Report">

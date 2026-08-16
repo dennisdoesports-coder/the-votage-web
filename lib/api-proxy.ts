@@ -13,10 +13,25 @@ const HOP_BY_HOP = new Set([
   'content-length',
 ])
 
-function filterHeaders(headers: Headers) {
+const RESPONSE_HEADER_BLOCKLIST = new Set([
+  ...HOP_BY_HOP,
+  'content-encoding',
+])
+
+function filterRequestHeaders(headers: Headers) {
   const out = new Headers()
   for (const [key, value] of headers.entries()) {
     if (!HOP_BY_HOP.has(key.toLowerCase())) {
+      out.set(key, value)
+    }
+  }
+  return out
+}
+
+function filterResponseHeaders(headers: Headers) {
+  const out = new Headers()
+  for (const [key, value] of headers.entries()) {
+    if (!RESPONSE_HEADER_BLOCKLIST.has(key.toLowerCase())) {
       out.set(key, value)
     }
   }
@@ -32,27 +47,63 @@ interface ProxyMethods {
   OPTIONS: () => NextResponse
 }
 
+function normalizeBackendBase(value: string) {
+  const trimmed = value.trim()
+
+  try {
+    const url = new URL(trimmed)
+    const isLocalHost =
+      url.hostname === 'localhost' ||
+      url.hostname === '127.0.0.1' ||
+      url.hostname === '0.0.0.0'
+
+    if (isLocalHost && url.protocol === 'https:') {
+      url.protocol = 'http:'
+      return url.toString()
+    }
+  } catch {
+    return trimmed
+  }
+
+  return trimmed
+}
+
 export function createProxyRoute(targetPath: string): ProxyMethods {
-  const backendBase =
+  const backendBase = normalizeBackendBase(
     process.env.BACKEND_URL || 'http://13.60.168.165:8000'
+  )
 
   async function proxy(req: NextRequest) {
     const target = new URL(targetPath, backendBase)
     target.search = req.nextUrl.search
 
-    const incomingHeaders = filterHeaders(req.headers)
+    const incomingHeaders = filterRequestHeaders(req.headers)
     const body =
       req.method === 'GET' || req.method === 'HEAD'
         ? undefined
         : await req.text()
 
-    const upstream = await fetch(target, {
-      method: req.method,
-      headers: incomingHeaders,
-      body,
-    })
+    let upstream: Response
+    try {
+      upstream = await fetch(target, {
+        method: req.method,
+        headers: incomingHeaders,
+        body,
+      })
+    } catch (error) {
+      const detail =
+        error instanceof Error ? error.message : 'Failed to reach backend service'
 
-    const respHeaders = filterHeaders(upstream.headers)
+      return NextResponse.json(
+        {
+          detail,
+          target: target.toString(),
+        },
+        { status: 502 }
+      )
+    }
+
+    const respHeaders = filterResponseHeaders(upstream.headers)
     const respBody = await upstream.arrayBuffer()
 
     return new NextResponse(respBody, {
