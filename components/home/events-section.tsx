@@ -4,19 +4,19 @@ import Image from 'next/image';
 const events = [
   {
     id: 1,
-    title: 'Refresh Tour 2026',
-    subtitle: 'Across the Globe',
-    date: 'Jan 31, 2026 - Jan 13, 2027',
-    time: null,
-    image: '/img/refresh-tours.jpg'
+    title: 'Afro Gospel Rave (A Mega Play)',
+    subtitle: null,
+    date: 'Sun. Sep 6, 2026',
+    time: "2pm (WAT)",
+    image: '/img/agr.jpeg'
   },
   {
     id: 2,
-    title: 'Night of Favour',
-    subtitle: 'Every Night With Jesus',
-    date: 'Friday & Saturday, February 20th & 21st, 2026',
-    time: '8:00PM (WAT) daily',
-    image: '/img/night-of-favour.jpeg'
+    title: 'Apostolic Shift',
+    subtitle: null,
+    date: 'Sat. September 22nd - Sun. September 23rd, 2026',
+    time: '3:00PM (WAT) & 8pm (WAT)',
+    image: '/img/apostolicshift.jpeg'
   }
 ];
 
@@ -30,13 +30,13 @@ export const EventsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event) => (
-            <div 
-              key={event.id} 
+            <div
+              key={event.id}
               className="bg-white rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-xl transition-shadow duration-300 p-3 flex flex-col gap-4 group"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden rounded relative bg-gray-200">
-                <Image 
-                  src={event.image} 
+              <div className="aspect-[4/5] w-full overflow-hidden rounded relative bg-gray-200">
+                <Image
+                  src={event.image}
                   alt={event.title}
                   fill
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
