@@ -4,13 +4,18 @@ import { Button } from "../ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import type { Hero } from "@/lib/contentful";
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  hero: Hero;
+}
+
+export const HeroSection = ({ hero }: HeroSectionProps) => {
   return (
     <div className="relative w-full h-screen min-h-200 flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/img/HERO2.jpg"
+        src={hero.backgroundImage}
         alt="Hero Background"
         fill
         className="object-cover"
@@ -30,8 +35,7 @@ export const HeroSection = () => {
           className="font-copperplate font-bold text-white uppercase tracking-[0.02em] leading-[1em]
                      text-4xl md:text-6xl lg:text-hero-heading mb-6"
         >
-          A generation <br className="hidden md:block" />
-          rooted in truth
+          {hero.headline}
         </motion.h1>
 
         {/* Subheadline */}
@@ -41,8 +45,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="font-body text-white-dim text-lg lg:text-sub-heading leading-[1.15em] max-w-2xl mb-12"
         >
-          We exist to share the life-giving message of Jesus and raise devoted
-          followers of Christ.
+          {hero.subtext}
         </motion.p>
 
         {/* CTA Buttons */}
