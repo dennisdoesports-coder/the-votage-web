@@ -3,26 +3,32 @@ import Image from 'next/image';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import type { EventItem } from '@/lib/contentful';
 
-const events = [
+export interface EventsSectionProps {
+  events?: EventItem[];
+}
+
+const defaultEvents: EventItem[] = [
   {
-    id: 1,
+    id: '1',
     title: 'Afro Gospel Rave (A Mega Play)',
-    subtitle: null,
+    subtitle: '',
     date: 'Sun. Sep 6, 2026',
     time: "2pm (WAT)",
+    location: null,
     image: '/img/agr.jpeg'
   },
   {
-    id: 2,
+    id: '2',
     title: 'Apostolic Shift',
-    subtitle: null,
+    subtitle: '',
     date: 'Sat. September 22nd - Sun. September 23rd, 2026',
     time: '3:00PM (WAT) & 8pm (WAT)',
+    location: null,
     image: '/img/apostolicshift.jpeg'
   }
 ];
 
-export const EventsSection = ({ events }: EventsSectionProps) => {
+export const EventsSection = ({ events = defaultEvents }: EventsSectionProps) => {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
