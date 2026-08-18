@@ -80,38 +80,10 @@ export const EventsSection = ({ events = defaultEvents }: EventsSectionProps) =>
                     </div>
                   )}
                 </dl>
-                <div className="px-3 pb-5 pt-1">
-                  <h3 className="font-copperplate text-xl text-black leading-tight mb-1.5">{event.title}</h3>
-                  <p className="font-copperplate text-sm text-[#4E4E4E] leading-snug mb-4">{event.subtitle}</p>
-
-                  {/* Practical details, separated from the billing above so the
-                    card reads as "what it is" then "when and where". */}
-                  <dl className="border-t border-gray-100 pt-3 flex flex-col gap-2">
-                    <div className="flex items-start gap-2">
-                      <Calendar className="w-3.5 h-3.5 mt-px shrink-0 text-[#9A9A9A]" aria-hidden="true" />
-                      <dd className="font-body text-xs text-black leading-snug">{event.date}</dd>
-                    </div>
-
-                    {event.time && (
-                      <div className="flex items-start gap-2">
-                        <Clock className="w-3.5 h-3.5 mt-px shrink-0 text-[#9A9A9A]" aria-hidden="true" />
-                        <dd className="font-body text-xs text-[#4E4E4E] leading-snug">{event.time}</dd>
-                      </div>
-                    )}
-
-                    {event.location && (
-                      <div className="flex items-start gap-2">
-                        <MapPin className="w-3.5 h-3.5 mt-px shrink-0 text-[#9A9A9A]" aria-hidden="true" />
-                        <dd className="font-body text-xs text-[#4E4E4E] leading-snug">
-                          {event.location}
-                        </dd>
-                      </div>
-                    )}
-                  </dl>
-                </div>
               </div>
-          ))}
             </div>
+          ))}
+        </div>
       </div>
     </section>
   );
