@@ -3,11 +3,32 @@ import Image from 'next/image';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import type { EventItem } from '@/lib/contentful';
 
-interface EventsSectionProps {
-  events: EventItem[];
+export interface EventsSectionProps {
+  events?: EventItem[];
 }
 
-export const EventsSection = ({ events }: EventsSectionProps) => {
+const defaultEvents: EventItem[] = [
+  {
+    id: '1',
+    title: 'Afro Gospel Rave (A Mega Play)',
+    subtitle: '',
+    date: 'Sun. Sep 6, 2026',
+    time: "2pm (WAT)",
+    location: null,
+    image: '/img/agr.jpeg'
+  },
+  {
+    id: '2',
+    title: 'Apostolic Shift',
+    subtitle: '',
+    date: 'Sat. September 22nd - Sun. September 23rd, 2026',
+    time: '3:00PM (WAT) & 8pm (WAT)',
+    location: null,
+    image: '/img/apostolicshift.jpeg'
+  }
+];
+
+export const EventsSection = ({ events = defaultEvents }: EventsSectionProps) => {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-20">
@@ -17,12 +38,10 @@ export const EventsSection = ({ events }: EventsSectionProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events.map((event) => (
-            <div 
-              key={event.id} 
+            <div
+              key={event.id}
               className="bg-white rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] hover:shadow-xl transition-shadow duration-300 p-3 flex flex-col gap-4 group"
             >
-              {/* Event flyers are 4:5 portrait, so the frame matches that ratio --
-                  a landscape frame would crop the poster's title and details away. */}
               <div className="aspect-[4/5] w-full overflow-hidden rounded relative bg-gray-200">
                 <Image
                   src={event.image}
