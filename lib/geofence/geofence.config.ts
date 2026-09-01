@@ -47,6 +47,6 @@ export const GEOFENCE_CONFIG: GeofenceConfig = {
   enabled: process.env.NEXT_PUBLIC_GEOFENCE_ENABLED !== 'false',
   zones: DEFAULT_GEOFENCE_ZONES,
   highAccuracy: true,
-  timeoutMs: 15000, // 15 seconds to acquire high-accuracy GPS fix
-  maximumAgeMs: 0, // Never use stale cached coordinates
+  timeoutMs: 6000, // 6 seconds for initial high-accuracy check before fast cellular fallback
+  maximumAgeMs: 30000, // Allow fresh cache within 30s for instant loading on mobile
 };
