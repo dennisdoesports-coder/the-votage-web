@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Eye, EyeOff } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
-import { GeofenceGuard } from '@/components/geofence/GeofenceGuard'
 
 const signInSchema = z.object({
   username: z.string().min(1, 'Username is required'),
@@ -15,7 +14,7 @@ const signInSchema = z.object({
 
 type SignInFormData = z.infer<typeof signInSchema>
 
-function SignInPageContent() {
+export default function SignInPage() {
   const { isLoading, isAuthenticated, login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
 
@@ -118,15 +117,5 @@ function SignInPageContent() {
         </form>
       </div>
     </div>
-  )
-}
-
-export default function SignInPage() {
-  return (
-    <Suspense fallback={null}>
-      <GeofenceGuard pageTitle="Admin Sign In">
-        <SignInPageContent />
-      </GeofenceGuard>
-    </Suspense>
   )
 }
